@@ -9,7 +9,9 @@ parser.add_argument('paths', metavar='path', nargs='+',
 args = parser.parse_args()
 
 for path in args.paths:
-	if path.endswith('.zip'):
+	if path.endswith('.dat'):
+		parser = ioapi.ulsFileParser(path)
+	elif path.endswith('.zip'):
 		parser = ioapi.ulsZipParser(path)
 	else:
 		parser = ioapi.ulsFolderParser(path)

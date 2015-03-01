@@ -28,8 +28,19 @@ class ulsFolderParser(ulsParser):
 		import os
 		return self.parseMap[filename]( open( os.path.join( self.path, filename ), 'rb' ) )
 
-	if file in ulsParser.parseMap:
-		pass
+class ulsFileParser(ulsParser):
+	def __init__( self, path ):
+		import os
+
+
+		self.path = path
+		self.parseMap = {}
+		file = os.path.basename( path )
+		if file in ulsParser.parseMap:
+			self.parseMap[file] = ulsParser.parseMap[file]
+
+	def parse( self, filename ):
+		return self.parseMap[filename]( open( self.path, 'rb' ) )
 
 class ulsZipParser(ulsParser):
 	def __init__( self, path ):
