@@ -22,6 +22,7 @@ def parse( fileLikeObject, keys ):
 		"uniqueSystemIdentifier",
 		"fccRegistrationNumber",
 		"sequenceNumber",
+		"voyageNumber",
 		"zip",
 		]
 
@@ -31,7 +32,7 @@ def parse( fileLikeObject, keys ):
 		"lastName",
 		"suffix",
 		"address",
-		"city"
+		"city",
 		]
 
 	for row in csv.reader(fileLikeObject, delimiter='|'):
@@ -241,6 +242,22 @@ def parseSF(fileLikeObject):
 		"licenseFreeFormCondition",
 		"statusCode",
 		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )
+
+
+def parseSV(fileLikeObject):
+	"""Parse SV.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"voyageNumber"
+		"voyageDescription",
 		]
 
 	return parse( fileLikeObject, keys )
