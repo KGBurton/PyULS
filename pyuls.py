@@ -19,9 +19,13 @@ def tryConvertString( input ):
 def parse( fileLikeObject, keys ):
 	"""Map a key list onto a CSV file and do some conversions"""
 	intKeys=[
-		"uniqueSystemIdentifier",
+		"antennaNumber",
+		"locationNumber",
 		"fccRegistrationNumber",
+		"frequencyNumber",
+		"prototypeSequenceId",
 		"sequenceNumber",
+		"uniqueSystemIdentifier",
 		"voyageNumber",
 		"zip",
 		]
@@ -262,3 +266,23 @@ def parseSV(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+def parseTP(fileLikeObject):
+	"""Parse TP.dat table - Transmission Method or Protocol"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"locationNumber",
+		"antennaNumber",
+		"prototypeSequenceId",
+		"protocol",
+		"protocolDescription",
+		"actionPerformed",
+		"statusCode",
+		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )

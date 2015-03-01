@@ -11,6 +11,7 @@ class ulsParser():
 		"SC.dat": pyuls.parseSC,
 		"SF.dat": pyuls.parseSF,
 		"SV.dat": pyuls.parseSV,
+		"TP.dat": pyuls.parseTP,
 		}
 
 class ulsFolderParser(ulsParser):
