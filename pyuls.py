@@ -176,7 +176,7 @@ def parseHS(fileLikeObject):
 		"ulsFileNumber",
 		"callSign",
 		"logDate",
-		"code"
+		"code",
 		]
 
 	return parse( fileLikeObject, keys )
@@ -185,14 +185,14 @@ def parseLA(fileLikeObject):
 	"""Parse LA.dat table"""
 
 	keys=[
-		"recordType"
-		"uniqueSystemIdentifier"
-		"callSign"
-		"attachmentCode"
-		"attachmentDescription"
-		"attachmentDate"
-		"attachmentFileName"
-		"actionPerformed"
+		"recordType",
+		"uniqueSystemIdentifier",
+		"callSign",
+		"attachmentCode",
+		"attachmentDescription",
+		"attachmentDate",
+		"attachmentFileName",
+		"actionPerformed",
 		]
 
 	return parse( fileLikeObject, keys )

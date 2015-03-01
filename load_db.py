@@ -1,12 +1,5 @@
 #!/usr/bin/python
 import pyuls
-
-# a generator that extracts relevant fields from a pipe-separated ULS EN.dat file
-def operators(filename):
-	with open(filename,'rb') as csvfile:
-		for row in pyuls.parseEN(csvfile):
-			yield row
-
 import sqlite3
 
 conn = sqlite3.connect('uls.db')
@@ -73,6 +66,6 @@ c.executemany('''INSERT INTO en VALUES
 	:applicationTypeCodeOther,
 	:statusCode,
 	:statusDate
-	)''', operators('EN.dat'))
+	)''', pyuls.parseEN( open( "EN.dat", 'rb' ) ) )
 
 c.execute("commit")
