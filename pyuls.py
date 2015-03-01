@@ -4,6 +4,18 @@ import csv
 """The purpose of this module is to parse each FCC
 ULS database type into corresponding python types"""
 
+def tryConvertString( input ):
+	"""
+	Try some different string encodings.
+	Hopefully someday we can find the standard the FCC uses.
+	"""
+	for conversion in [ 'iso_8859_1', 'cp1252', 'utf-8' ]:
+		try:
+			return unicode(input, conversion, 'strict' )
+		except UnicodeDecodeError:
+			pass
+	return unicode( input, 'iso_8859_1', 'ignore' )
+
 def parse( fileLikeObject, keys ):
 	"""Map a key list onto a CSV file and do some conversions"""
 	intKeys=[
@@ -29,7 +41,7 @@ def parse( fileLikeObject, keys ):
 				retn[key] = int(retn[key])
 		for key in iso8859Keys:
 			if key in retn:
-				retn[key] = unicode(retn[key], '8859', "ignore")
+				retn[key] = tryConvertString( retn[key] )
 		yield retn
 
 
