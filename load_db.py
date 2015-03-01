@@ -1,20 +1,11 @@
 #!/usr/bin/python
-import csv
+import pyuls
 
 # a generator that extracts relevant fields from a pipe-separated ULS EN.dat file
 def operators(filename):
 	with open(filename,'rb') as csvfile:
-		csvreader = csv.reader(csvfile, delimiter='|')
-		for row in csvreader:
-			callsign = row[4]
-			firstname = unicode(row[8], '8859', "ignore")
-			lastname = unicode(row[10], '8859', "ignore")
-			address = unicode(row[15], '8859', "ignore")
-			city = unicode(row[16], '8859', "ignore")#Retry without ignore
-			state = row[17]
-			zip = row[18]
-#			print firstname,lastname
-			yield(callsign,firstname,lastname,address,city,state,zip)
+		for row in pyuls.parseEN(csvfile):
+			yield row
 
 import sqlite3
 
@@ -23,25 +14,65 @@ conn.isolation_level = None
 
 c = conn.cursor()
 c.execute("begin")
-c.execute('''CREATE TABLE IF NOT EXISTS operators
-	(callsign TEXT,
-	fname TEXT,
-	lname TEXT,
+
+c.execute('''CREATE TABLE IF NOT EXISTS en
+	(
+	recordType CHAR(2),
+	uniqueSystemIdentifier INT,
+	ulsFileNumber TEXT,
+	ebfNumber TEXT,
+	callSign TEXT,
+	entityType CHAR,
+	licenseeId TEXT,
+	firstName TEXT,
+	middleInitial TEXT,
+	lastName TEXT,
+	suffix TEXT,
+	phone TEXT,
+	fax TEXT,
+	email TEXT,
 	address TEXT,
 	city TEXT,
 	state TEXT,
-	zip INT)''')
+	zip INT,
+	poBox TEXT,
+	attentionLine TEXT,
+	sgin TEXT,
+	fccRegistrationNumber INT,
+	applicationTypeCode CHAR(1),
+	applicationTypeCodeOther TEXT,
+	statusCode TEXT,
+	statusDate TEXT
+	)''')
 
-c.executemany("INSERT INTO operators VALUES(?,?,?,?,?,?,?)", operators('EN.dat') )
-
-c.execute('''CREATE INDEX IF NOT EXISTS operator_state_city
-    ON
-    operators
-    (
-    state,
-    city
-    )
-    ''')
-
+c.executemany('''INSERT INTO en VALUES
+	(
+	:recordType,
+	:uniqueSystemIdentifier,
+	:ulsFileNumber,
+	:ebfNumber,
+	:callSign,
+	:entityType,
+	:licenseeId,
+	:firstName,
+	:middleInitial,
+	:lastName,
+	:suffix,
+	:phone,
+	:fax,
+	:email,
+	:address,
+	:city,
+	:state,
+	:zip,
+	:poBox,
+	:attentionLine,
+	:sgin,
+	:fccRegistrationNumber,
+	:applicationTypeCode,
+	:applicationTypeCodeOther,
+	:statusCode,
+	:statusDate
+	)''', operators('EN.dat'))
 
 c.execute("commit")
