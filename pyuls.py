@@ -27,7 +27,6 @@ def parse( fileLikeObject, keys ):
 		"sequenceNumber",
 		"uniqueSystemIdentifier",
 		"voyageNumber",
-		"zip",
 		]
 
 	iso8859Keys=[

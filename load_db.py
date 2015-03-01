@@ -27,7 +27,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS en
 	address TEXT,
 	city TEXT,
 	state TEXT,
-	zip INT,
+	zip TEXT,
 	poBox TEXT,
 	attentionLine TEXT,
 	sgin TEXT,
