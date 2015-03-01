@@ -37,10 +37,10 @@ def parse( fileLikeObject, keys ):
 	for row in csv.reader(fileLikeObject, delimiter='|'):
 		retn = dict(zip(keys, row))
 		for key in intKeys:
-			if key in retn:
+			if (key in retn) and retn[key]:
 				retn[key] = int(retn[key])
 		for key in iso8859Keys:
-			if key in retn:
+			if (key in retn) and retn[key]:
 				retn[key] = tryConvertString( retn[key] )
 		yield retn
 
