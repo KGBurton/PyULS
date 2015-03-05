@@ -49,6 +49,64 @@ def parse( fileLikeObject, keys ):
 		yield retn
 
 
+def parseA2(fileLikeObject):
+	"""Parse A2.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"spectrumManagerLeasing",
+		"defactoTransferLeasing",
+		"newSpectrumLeasing",
+		"spectrumSubleasing",
+		"transferOfControlOfLessee",
+		"revisionOfSpectrumLease",
+		"assignmentOfSpectrumLease",
+		"PFRStatus",
+		]
+
+	return parse( fileLikeObject, keys )
+
+def parseAD(fileLikeObject):
+	"""Parse AD.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"applicationPurpose",
+		"applicationStatus",
+		"applicationFeeExempt",
+		"regulatoryFeeExempt",
+		"source",
+		"requestedExpirationDate",
+		"receiptDate",
+		"notificationCode",
+		"notificationDate",
+		"expandingAreaOrContour",
+		"majorMinorInidicator",
+		"originalApplicationPurpose",
+		"requestingAWaiver",
+		"howManyWaiversRequested",
+		"anyAttachments",
+		"numberOfRequestedSIDs",
+		"feeControlNumber",
+		"dateEntered",
+		"reservedPosition1",
+		"frequencyCoordinationIndicator",
+		"emergencySTA",
+		"overallChangeType",
+		"extendedImplmentationPlan",
+		"grandfatheredApprovedOrIntegrated",
+		"WaiverDeferralOfApplicationFees",
+		"hasTermPendingInd",
+		]
+
+	return parse( fileLikeObject, keys )
+
 def parseAM(fileLikeObject):
 	"""Parse AM.dat table"""
 
@@ -209,6 +267,19 @@ def parseLA(fileLikeObject):
 		"attachmentDate",
 		"attachmentFileName",
 		"actionPerformed",
+		]
+
+	return parse( fileLikeObject, keys )
+
+def parseRE(fileLikeObject):
+	"""Parse RE.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"reason",
 		]
 
 	return parse( fileLikeObject, keys )
