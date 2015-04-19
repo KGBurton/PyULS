@@ -20,6 +20,8 @@ for file in os.listdir("."):
 		"SC.dat": pyuls.parseSC,
 		"SF.dat": pyuls.parseSF,
 		"SH.dat": pyuls.parseSH,
+		"SV.dat": pyuls.parseSV,
+		"TP.dat": pyuls.parseTP,
 		}
 
 	if file in parseMap:
