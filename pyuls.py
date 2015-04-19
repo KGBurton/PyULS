@@ -414,6 +414,41 @@ def parseSF(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+def parseSH(fileLikeObject):
+	"""Parse SH.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"typeOfAuthorization",
+		"numberInFleet",
+		"generalClassOfShipCode",
+		"specialClassOfShipCode",
+		"shipName",
+		"officialNumberOfShip",
+		"internationalVoyagesIndicator",
+		"foreignCommunicationsIndicator",
+		"radiotelegraphWorkingSeriesRequired",
+		"requestForMmsi",
+		"grossTonnage",
+		"shipLength",
+		"workingFreqS1",
+		"workingFreqS2",
+		"selCallNumber",
+		"selCallInmarsat",
+		"mmsiNumber",
+		"requiredCatA",
+		"requiredCatB",
+		"requiredCatC",
+		"requiredCatD",
+		"requiredCatE",
+		]
+
+	return parse( fileLikeObject, keys )
+
 
 def parseSV(fileLikeObject):
 	"""Parse SV.dat table"""
