@@ -395,6 +395,56 @@ def parseSC(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+def parseSE(fileLikeObject):
+	"""Parse SE.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"shipCallSign",
+		"portRegistry",
+		"owner",
+		"operator",
+		"charter",
+		"agent"
+		"radiotelephoneExemptionRequested",
+		"gmdssExemptionRequested",
+		"radioDirectionExemptionRequested",
+		"previousExemptionFileNumber",
+		"foreignPort",
+		"vesselSizeException",
+		"equipmentExemption",
+		"limitedRoutesExemption",
+		"conditionOfVoyagesExemption",
+		"otherExemption",
+		"otherExemptionDescription",
+		"shipType",
+		"numberOfCrew",
+		"numberOfPassengers",
+		"numberOfOthers",
+		"countOfVhf",
+		"countOfVhfDsc",
+		"countOfEpirb",
+		"countOfSurvivalCraft",
+		"countOfEarthStation",
+		"countOfAutoAlarm",
+		"countOfSingleSideBand",
+		"singleSideBandTypeMf",
+		"singleSideBandTypeHf",
+		"singleSideBandTypeDsc",
+		"countOfNavtex",
+		"countOf9GhzRadar",
+		"countOf500KhzDistress",
+		"countOfReservePower",
+		"countOfOther",
+		"descriptionOfOther",
+		]
+
+	return parse( fileLikeObject, keys )
+
 def parseSF(fileLikeObject):
 	"""Parse SF.dat table"""
 
@@ -449,6 +499,35 @@ def parseSH(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+
+def parseSR(fileLikeObject):
+	"""Parse SR.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"epirbIdentificationCode",
+		"inmarsatA",
+		"inmarsatB",
+		"inmarsatC",
+		"inmarsatM",
+		"inmarsatMini",
+		"vhf",
+		"mf",
+		"hf",
+		"dsc",
+		"epirb_406_mhz",
+		"epirb_121_5_mhz",
+		"sart",
+		"raftCount",
+		"lifeboatCount",
+		"vesselCapacity",
+		]
+
+	return parse( fileLikeObject, keys )
 
 def parseSV(fileLikeObject):
 	"""Parse SV.dat table"""

@@ -18,8 +18,10 @@ for file in os.listdir("."):
 		"MW.dat": pyuls.parseMW,
 		"RE.dat": pyuls.parseRE,
 		"SC.dat": pyuls.parseSC,
+		"SE.dat": pyuls.parseSE,
 		"SF.dat": pyuls.parseSF,
 		"SH.dat": pyuls.parseSH,
+		"SR.dat": pyuls.parseSR,
 		"SV.dat": pyuls.parseSV,
 		"TP.dat": pyuls.parseTP,
 		}
