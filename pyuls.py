@@ -133,6 +133,25 @@ def parseAM(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+def parseBC(fileLikeObject):
+	"""Parse BC.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"broadcastCallsign",
+		"broadcastCity",
+		"broadcastState",
+		"facilityIdOfParentStation",
+		"radioServiceCodeOfParentStation",
+		"nonParentTypeCode",
+		]
+
+	return parse( fileLikeObject, keys )
+
 def parseCG(fileLikeObject):
 	"""Parse CG.dat table"""
 	keys=[
@@ -343,15 +362,35 @@ def parseLA(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
-def parseRE(fileLikeObject):
-	"""Parse RE.dat table"""
+def parseLM(fileLikeObject):
+	"""Parse LM.dat table"""
 
 	keys=[
 		"recordType",
 		"uniqueSystemIdentifier",
 		"ulsFileNumber",
 		"ebfNumber",
-		"reason",
+		"callSign",
+		"extendedImplementationApproved",
+		"eligibilityActivity",
+		"statusCode",
+		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )
+
+def parseMI(fileLikeObject):
+	"""Parse MI.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"facilityTypeCode",
+		"statementOfIntention",
+		"licenseTypeCode",
 		]
 
 	return parse( fileLikeObject, keys )
@@ -374,6 +413,19 @@ def parseMW(fileLikeObject):
 		"cummulativeEffortIsMajor",
 		"statusCode",
 		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )
+
+def parseRE(fileLikeObject):
+	"""Parse RE.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"reason",
 		]
 
 	return parse( fileLikeObject, keys )
