@@ -133,6 +133,56 @@ def parseAM(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+def parseCG(fileLikeObject):
+	"""Parse CG.dat table"""
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"stationAvailable",
+		"publicCorrespondence",
+		"stationIdentifier",
+		"aeronauticalEnrouteCallSign",
+		"faaOfficeNotified",
+		"dateFaaNotified",
+		"seekingAuthorization",
+		"regularlyEngaged",
+		"engaged",
+		"publicMooring",
+		"servicing",
+		"fixedStation",
+		"maritimeSupport",
+		"aeronauticalFixed",
+		"unicom",
+		"searchAndRescue",
+		"flightTestUhf",
+		"flightTestManufacturer",
+		"flightTestParentCorporation",
+		"flightTestEducational",
+		"flightSchoolCertification",
+		"lighterThanAir",
+		"ballooning",
+		"locatedAtAirport",
+		"radiodeterminationNotFaa",
+		"radiodeterminationEquipment",
+		"radiodeterminationPublic",
+		"radiodeterminationElts"
+		"civilAirPatrol",
+		"aeronauticalEnroute",
+		"mobileRoutine",
+		"mobileOwnerOperator",
+		"mobileAgreement",
+		"coastGroundIdentifier",
+		"selectiveCallsignIdentifier",
+		"classStationCode",
+		"statusCode",
+		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )
+
 def parseCO(fileLikeObject):
 	"""Parse CO.dat table"""
 	keys=[
@@ -179,6 +229,28 @@ def parseEN(fileLikeObject):
 		"applicationTypeCodeOther",
 		"statusCode",
 		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )
+
+def parseFA(fileLikeObject):
+	"""Parse FA.dat table"""
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"operatorClassCode",
+		"shipRadarEndorsement",
+		"sixMonthEndorsement",
+		"dateOfBirth",
+		"certificationNotRestricted",
+		"certificationRestrictedPermit",
+		"certificationRestrictedPermitLimitedUse",
+		"coleManagerCode",
+		"dmCallSign",
+		"validProofOfPassing",
 		]
 
 	return parse( fileLikeObject, keys )
@@ -280,6 +352,28 @@ def parseRE(fileLikeObject):
 		"ulsFileNumber",
 		"ebfNumber",
 		"reason",
+		]
+
+	return parse( fileLikeObject, keys )
+
+def parseMW(fileLikeObject):
+	"""Parse MW.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"packIndicator",
+		"packRegistrationNumber",
+		"packName",
+		"typeOfOperation",
+		"smsaCode",
+		"stationClass",
+		"cummulativeEffortIsMajor",
+		"statusCode",
+		"statusDate",
 		]
 
 	return parse( fileLikeObject, keys )
