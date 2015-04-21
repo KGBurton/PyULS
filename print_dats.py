@@ -31,6 +31,7 @@ for file in os.listdir("."):
 		"SR.dat": pyuls.parseSR,
 		"SV.dat": pyuls.parseSV,
 		"TP.dat": pyuls.parseTP,
+		"VC.dat": pyuls.parseVC,
 		}
 
 	if file in parseMap:

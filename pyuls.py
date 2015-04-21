@@ -714,3 +714,17 @@ def parseTP(fileLikeObject):
 		]
 
 	return parse( fileLikeObject, keys )
+
+def parseVC(fileLikeObject):
+	"""Parse VC.dat table - Vanity Call Sign"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"orderOfPrecedence",
+		"requestedCallSign",
+		]
+
+	return parse( fileLikeObject, keys )
