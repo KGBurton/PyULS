@@ -417,6 +417,38 @@ def parseMW(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+def parseP2(fileLikeObject):
+	"""Parse P2.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"leaseId",
+		"leasedSiteLinkIdentifier",
+		"actionPerformed",
+		"licensedPathNumber",
+		"licensedTransmitLocationNumber",
+		"licensedTransmitAntennaNumber",
+		"licensedReceiverLocationNumber",
+		"licensedReceiverAntennaNumber",
+		"masDemsSubTypeOfOperation",
+		"pathTypeCode",
+		"passiveReceiverIndicator",
+		"countryCode",
+		"interferenceToGso",
+		"receiverCallSign",
+		"angularSeparation",
+		"certNoAlternative",
+		"certNoInterference",
+		"statusCode",
+		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )
+
 def parseRE(fileLikeObject):
 	"""Parse RE.dat table"""
 
