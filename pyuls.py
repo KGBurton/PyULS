@@ -252,6 +252,52 @@ def parseEN(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+def parseF5(fileLikeObject):
+	"""Parse F5.dat table"""
+
+	keys = [
+		"recordType",
+		"uniqueSystemIdentifier",
+		"callSign",
+		"leaseId",
+		"leasedSiteLinkIdentifier",
+		"leasedLocationNumber",
+		"leasedAntennaNumber",
+		"frequency",
+		"frequencyNumber",
+		"specialConditionType",
+		"specialConditionCode",
+		"statusCode",
+		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )
+
+def parseF6(fileLikeObject):
+	"""Parse F6.dat table"""
+
+	keys = [
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"callSign",
+		"leaseId",
+		"leasedSiteLinkIdentifier",
+		"leasedLocationNumber",
+		"leasedAntennaNumber",
+		"frequencyNumber",
+		"frequency",
+		"frequencyFreeForm",
+		"uniqueFrequencyFreeFormIdentifier",
+		"sequenceNumber",
+		"frequencyFreeFormCondition",
+		"statusCode",
+		"statusDate",
+		]
+
+	return parse( fileLikeObject, keys )
+
 def parseFA(fileLikeObject):
 	"""Parse FA.dat table"""
 	keys=[

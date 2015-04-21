@@ -12,6 +12,8 @@ for file in os.listdir("."):
 		"CG.dat": pyuls.parseCG,
 		"CO.dat": pyuls.parseCO,
 		"EN.dat": pyuls.parseEN,
+		"F5.dat": pyuls.parseF5,
+		"F6.dat": pyuls.parseF6,
 		"FA.dat": pyuls.parseFA,
 		"HD.dat": pyuls.parseHD,
 		"HS.dat": pyuls.parseHS,
