@@ -50,7 +50,7 @@ def parse( fileLikeObject, keys ):
 
 
 def parseA2(fileLikeObject):
-	"""Parse A2.dat table"""
+	"""Parse A2.dat table - ADDITIONAL APPLICATION DETAIL"""
 
 	keys=[
 		"recordType",
@@ -70,7 +70,7 @@ def parseA2(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseAD(fileLikeObject):
-	"""Parse AD.dat table"""
+	"""Parse AD.dat table - APPLICATION DETAIL"""
 
 	keys=[
 		"recordType",
@@ -108,7 +108,7 @@ def parseAD(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseAM(fileLikeObject):
-	"""Parse AM.dat table"""
+	"""Parse AM.dat table - AMATEUR"""
 
 	keys=[
 		"recordType",
@@ -134,7 +134,7 @@ def parseAM(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseBC(fileLikeObject):
-	"""Parse BC.dat table"""
+	"""Parse BC.dat table - BROADCAST CALL SIGN"""
 
 	keys=[
 		"recordType",
@@ -203,7 +203,7 @@ def parseCG(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseCO(fileLikeObject):
-	"""Parse CO.dat table"""
+	"""Parse CO.dat table - COMMENTS"""
 	keys=[
 		"recordType",
 		"uniqueSystemIdentifier",
@@ -218,7 +218,7 @@ def parseCO(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseEN(fileLikeObject):
-	"""Parse EN.dat table"""
+	"""Parse EN.dat table - ENTITY"""
 
 	keys = [
 		"recordType",
@@ -253,7 +253,7 @@ def parseEN(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseF5(fileLikeObject):
-	"""Parse F5.dat table"""
+	"""Parse F5.dat table - Leased Frequency Canned Special Conditions"""
 
 	keys = [
 		"recordType",
@@ -274,7 +274,7 @@ def parseF5(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseF6(fileLikeObject):
-	"""Parse F6.dat table"""
+	"""Parse F6.dat table - Leased Frequency Free-Form Special Conditions"""
 
 	keys = [
 		"recordType",
@@ -299,7 +299,7 @@ def parseF6(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseFA(fileLikeObject):
-	"""Parse FA.dat table"""
+	"""Parse FA.dat table - FRC Admin"""
 	keys=[
 		"recordType",
 		"uniqueSystemIdentifier",
@@ -321,7 +321,7 @@ def parseFA(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseHD(fileLikeObject):
-	"""Parse HD.dat table"""
+	"""Parse HD.dat table - APPLICATION/LICENSE HEADER"""
 
 	keys=[
 		"recordType",
@@ -379,7 +379,7 @@ def parseHD(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseHS(fileLikeObject):
-	"""Parse HS.dat table"""
+	"""Parse HS.dat table - HISTORY"""
 
 	keys=[
 		"recordType",
@@ -393,7 +393,7 @@ def parseHS(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseLA(fileLikeObject):
-	"""Parse LA.dat table"""
+	"""Parse LA.dat table - LICENSE_ATTACHMENT"""
 
 	keys=[
 		"recordType",
@@ -409,7 +409,7 @@ def parseLA(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseLM(fileLikeObject):
-	"""Parse LM.dat table"""
+	"""Parse LM.dat table - LAND MOBILE ADMINISTRATION"""
 
 	keys=[
 		"recordType",
@@ -426,7 +426,7 @@ def parseLM(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseMI(fileLikeObject):
-	"""Parse MI.dat table"""
+	"""Parse MI.dat table - MDS/ITFS ADMINISTRATION"""
 
 	keys=[
 		"recordType",
@@ -442,7 +442,7 @@ def parseMI(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseMW(fileLikeObject):
-	"""Parse MW.dat table"""
+	"""Parse MW.dat table - MICROWAVE"""
 
 	keys=[
 		"recordType",
@@ -464,7 +464,7 @@ def parseMW(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseP2(fileLikeObject):
-	"""Parse P2.dat table"""
+	"""Parse P2.dat table - Leased Microwave Path"""
 
 	keys=[
 		"recordType",
@@ -496,7 +496,7 @@ def parseP2(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseRI(fileLikeObject):
-	"""Parse RI.dat table"""
+	"""Parse RI.dat table - Revenue Information"""
 
 	keys=[
 		"recordType",
@@ -516,7 +516,7 @@ def parseRI(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseRE(fileLikeObject):
-	"""Parse RE.dat table"""
+	"""Parse RE.dat table - REASON"""
 
 	keys=[
 		"recordType",
@@ -529,7 +529,7 @@ def parseRE(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseSC(fileLikeObject):
-	"""Parse SC.dat table"""
+	"""Parse SC.dat table - SPECIAL CONDITION"""
 
 	keys=[
 		"recordType",
@@ -546,7 +546,7 @@ def parseSC(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseSE(fileLikeObject):
-	"""Parse SE.dat table"""
+	"""Parse SE.dat table - SHIP EXEMPTION"""
 
 	keys=[
 		"recordType",
@@ -596,7 +596,7 @@ def parseSE(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseSF(fileLikeObject):
-	"""Parse SF.dat table"""
+	"""Parse SF.dat table - LICENSE FREE FORM SPECIAL CONDITION"""
 
 	keys=[
 		"recordType",
@@ -615,7 +615,7 @@ def parseSF(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseSH(fileLikeObject):
-	"""Parse SH.dat table"""
+	"""Parse SH.dat table - SHIP"""
 
 	keys=[
 		"recordType",
@@ -651,7 +651,7 @@ def parseSH(fileLikeObject):
 
 
 def parseSR(fileLikeObject):
-	"""Parse SR.dat table"""
+	"""Parse SR.dat table - SHIP RESCUE ADMINISTRATION"""
 
 	keys=[
 		"recordType",
@@ -680,7 +680,7 @@ def parseSR(fileLikeObject):
 	return parse( fileLikeObject, keys )
 
 def parseSV(fileLikeObject):
-	"""Parse SV.dat table"""
+	"""Parse SV.dat table - SHIP VOYAGE"""
 
 	keys=[
 		"recordType",
