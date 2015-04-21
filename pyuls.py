@@ -495,6 +495,26 @@ def parseP2(fileLikeObject):
 
 	return parse( fileLikeObject, keys )
 
+def parseRI(fileLikeObject):
+	"""Parse RI.dat table"""
+
+	keys=[
+		"recordType",
+		"uniqueSystemIdentifier",
+		"ulsFileNumber",
+		"ebfNumber",
+		"entityType",
+		"yearSequenceId",
+		"grossRevenues",
+		"yearEndDate",
+		"averageGrossRevenues",
+		"assetDisclosure",
+		"statementType",
+		"inExistence",
+		]
+
+	return parse( fileLikeObject, keys )
+
 def parseRE(fileLikeObject):
 	"""Parse RE.dat table"""
 
