@@ -1,9 +1,5 @@
 #!/usr/bin/python
 
-def camelCase(st):
-    output = ''.join(x for x in st.title() if x.isalpha())
-    return output[0].lower() + output[1:]
-
 def row_compare( ws, row, cols ):
 	col_idx = 0
 	for col in cols:
@@ -48,9 +44,13 @@ def extract_sheets(wb):
 			continue
 		yield(sheet_name,list(extract_sheet(ws)))
 
+if __name__ == "__main__":
+	def camelCase(st):
+	    output = ''.join(x for x in st.title() if x.isalpha())
+	    return output[0].lower() + output[1:]
 
-import xlrd
-for sheet in extract_sheets(xlrd.open_workbook('docs/pa_ddef42.xls')):
-	print sheet[0]
-	for x in sheet[1]:
-		print "\t",camelCase(x[1].encode('utf-8'))
+	import xlrd
+	for sheet in extract_sheets(xlrd.open_workbook('docs/pa_ddef42.xls')):
+		print sheet[0]
+		for x in sheet[1]:
+			print "\t",camelCase(x[1].encode('utf-8'))
