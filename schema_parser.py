@@ -18,7 +18,10 @@ def is_header(ws,row):
 	return row_compare( ws, row, [ "Position", "Data Element", "Definition" ] )
 
 def row_is_empty(ws,row):
-	return row_compare( ws, row, [ "", "", "" ] )
+	if( row_compare( ws, row, [ "", "", "" ] ) ): return True
+	if( row_compare( ws, row, [ "", "", " " ] ) ): return True
+	if( row_compare( ws, row, [ "", "x", "" ] ) ): return True
+	return False
 
 for sheet_name in workbook.sheet_names():
 	worksheet = workbook.sheet_by_name(sheet_name)
