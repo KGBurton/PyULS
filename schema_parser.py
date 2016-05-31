@@ -1,6 +1,4 @@
 #!/usr/bin/python
-import xlrd
-workbook = xlrd.open_workbook('docs/pa_ddef42.xls')
 
 def camelCase(st):
     output = ''.join(x for x in st.title() if x.isalpha())
@@ -23,28 +21,34 @@ def row_is_empty(ws,row):
 	if( row_compare( ws, row, [ "", "x", "" ] ) ): return True
 	return False
 
-for sheet_name in workbook.sheet_names():
-	worksheet = workbook.sheet_by_name(sheet_name)
-	table_name = worksheet.cell_value(0,0)
-
-	print "table:",worksheet.name
-	if( table_name == "" ):
-		"""Skip any empty sheets"""
-		continue
-
+def extract_sheet(ws):
 	row_offset = 0
-	if( is_header(worksheet,1) ):
+	if( is_header(ws,1) ):
 		row_offset = 1
-	elif( is_header(worksheet,2) ):
+	elif( is_header(ws,2) ):
 		row_offset = 2
-	print worksheet.cell_value(row_offset,0),table_name
-	for row in xrange( row_offset + 1, worksheet.nrows ):
-		if( row_is_empty(worksheet,row) ):
+
+	for row in xrange( row_offset + 1, ws.nrows ):
+		if( row_is_empty(ws,row) ):
 			continue
-		field_id = int( worksheet.cell_value( row, 0 ) )
-		field_name = worksheet.cell_value( row, 1 )
-		field_type = worksheet.cell_value( row, 2 )
+
+		field_position = int( ws.cell_value( row, 0 ) )
+		field_data_element = ws.cell_value( row, 1 )
+		field_definition = ws.cell_value( row, 2 )
 		if( row == row_offset + 1 ):
-			field_name = field_name.replace( "[" + worksheet.name + "]", "" )
-		field_name = field_name.rstrip()
-		print field_id,field_name,field_type
+			field_data_element = field_data_element.replace( "[" + ws.name + "]", "" )
+		yield(field_position,field_data_element.rstrip(),field_definition)
+
+def extract_sheets(wb):
+	for sheet_name in wb.sheet_names():
+		ws = wb.sheet_by_name(sheet_name)
+
+		if( ws.name == "" ):
+			"""Skip any empty sheets"""
+			continue
+		yield(sheet_name,list(extract_sheet(ws)))
+
+
+import xlrd
+for sheet in extract_sheets(xlrd.open_workbook('docs/pa_ddef42.xls')):
+	print sheet
