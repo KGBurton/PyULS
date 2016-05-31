@@ -44,7 +44,7 @@ def extract_tables(filename):
 		if( ws.name == "" ):
 			"""Skip any empty sheets"""
 			continue
-		yield(sheet_name,list(extract_table(ws)))
+		yield(sheet_name,ws.cell_value(0,0),list(extract_table(ws)))
 
 if __name__ == "__main__":
 	def camelCase(st):
@@ -56,8 +56,8 @@ if __name__ == "__main__":
 		file=sys.argv[1]
 
 		for sheet in extract_tables(sys.argv[1]):
-			print sheet[0]
-			for x in sheet[1]:
-				print "\t",camelCase(x[1].encode('utf-8'))
+			print sheet[0],":",sheet[1]
+			for x in sheet[2]:
+				print "\t",camelCase(x[1].encode('utf-8')),":",x[2]
 	else:
 		print "Usage:",sys.argv[0],"path-to-excel-schema"
