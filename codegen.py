@@ -29,9 +29,6 @@ for sheet_name in workbook.sheet_names():
 		"""Skip any empty sheets"""
 		continue
 
-	if( table_name != "FREQUENCY COORDINATION" ):
-		continue
-
 	row_offset = 0
 	if( is_header(worksheet,1) ):
 		row_offset = 1
