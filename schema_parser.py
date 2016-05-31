@@ -17,7 +17,7 @@ def row_is_empty(ws,row):
 	if( row_compare( ws, row, [ "", "x", "" ] ) ): return True
 	return False
 
-def extract_sheet(ws):
+def extract_table(ws):
 	row_offset = 0
 	if( is_header(ws,1) ):
 		row_offset = 1
@@ -35,14 +35,16 @@ def extract_sheet(ws):
 			field_data_element = field_data_element.replace( "[" + ws.name + "]", "" )
 		yield(field_position,field_data_element.rstrip(),field_definition)
 
-def extract_sheets(wb):
+def extract_tables(filename):
+	import xlrd
+	wb = xlrd.open_workbook(sys.argv[1])
 	for sheet_name in wb.sheet_names():
 		ws = wb.sheet_by_name(sheet_name)
 
 		if( ws.name == "" ):
 			"""Skip any empty sheets"""
 			continue
-		yield(sheet_name,list(extract_sheet(ws)))
+		yield(sheet_name,list(extract_table(ws)))
 
 if __name__ == "__main__":
 	def camelCase(st):
@@ -53,8 +55,7 @@ if __name__ == "__main__":
 	if( len(sys.argv) > 1 ):
 		file=sys.argv[1]
 
-		import xlrd
-		for sheet in extract_sheets(xlrd.open_workbook(sys.argv[1])):
+		for sheet in extract_tables(sys.argv[1]):
 			print sheet[0]
 			for x in sheet[1]:
 				print "\t",camelCase(x[1].encode('utf-8'))
