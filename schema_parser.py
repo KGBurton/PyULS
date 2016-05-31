@@ -51,4 +51,6 @@ def extract_sheets(wb):
 
 import xlrd
 for sheet in extract_sheets(xlrd.open_workbook('docs/pa_ddef42.xls')):
-	print sheet
+	print sheet[0]
+	for x in sheet[1]:
+		print "\t",camelCase(x[1].encode('utf-8'))
