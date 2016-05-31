@@ -49,8 +49,14 @@ if __name__ == "__main__":
 	    output = ''.join(x for x in st.title() if x.isalpha())
 	    return output[0].lower() + output[1:]
 
-	import xlrd
-	for sheet in extract_sheets(xlrd.open_workbook('docs/pa_ddef42.xls')):
-		print sheet[0]
-		for x in sheet[1]:
-			print "\t",camelCase(x[1].encode('utf-8'))
+	import sys
+	if( len(sys.argv) > 1 ):
+		file=sys.argv[1]
+
+		import xlrd
+		for sheet in extract_sheets(xlrd.open_workbook(sys.argv[1])):
+			print sheet[0]
+			for x in sheet[1]:
+				print "\t",camelCase(x[1].encode('utf-8'))
+	else:
+		print "Usage:",sys.argv[0],"path-to-excel-schema"
