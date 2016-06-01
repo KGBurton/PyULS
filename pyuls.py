@@ -17,12 +17,12 @@ def tryConvertString( input ):
 			pass
 	return unicode( input, 'iso_8859_1', 'ignore' )
 
-tables={}
+parsers={}
 
 from functools import partial
-def metaparser( tableKey, fileLikeObject ):
+def parse( tableKey, fileLikeObject ):
 	"""Map a key list onto a CSV file and do some conversions"""
-	keys = tables[tableKey][1]
+	keys = parsers[tableKey][1]
 	for row in csv.reader(fileLikeObject, delimiter='|'):
 		yield dict(zip(keys, row))
 
@@ -32,5 +32,4 @@ for sheet in schema_parser.extract_tables("docs/pa_ddef42.xls"):
 	names=[]
 	for row in sheet[2]:
 		names.append(row[1])
-	tables[sheet[0]]=(sheet[1],names)
-	exec("def parse"+sheet[0]+"(fileLikeObject):\n\treturn metaparser('" + sheet[0] + "',fileLikeObject)")
+	parsers[sheet[0]]=(sheet[1],names)

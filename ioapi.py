@@ -1,43 +1,34 @@
 import pyuls
+import functools
+import fnmatch
+import os
 
 class ulsParser():
-	parseMap = {
-		"AM.dat": pyuls.parseAM,
-		"CO.dat": pyuls.parseCO,
-		"EN.dat": pyuls.parseEN,
-		"HD.dat": pyuls.parseHD,
-		"HS.dat": pyuls.parseHS,
-		"LA.dat": pyuls.parseLA,
-		"SC.dat": pyuls.parseSC,
-		"SF.dat": pyuls.parseSF,
-		"SV.dat": pyuls.parseSV,
-		"TP.dat": pyuls.parseTP,
-		}
+	pass
 
 class ulsFolderParser(ulsParser):
 	def __init__( self, path ):
-		import os
-
 		self.path = path
 		self.parseMap = {}
 		for file in os.listdir(path):
-			if file in ulsParser.parseMap:
-				self.parseMap[file] = ulsParser.parseMap[file]
+			if fnmatch.fnmatch(file, '??.dat'):
+				fileCode = file[0:2]
+				if( fileCode in pyuls.parsers ):
+					self.parseMap[file] = functools.partial( pyuls.parse, fileCode )
 
 	def parse( self, filename ):
-		import os
 		return self.parseMap[filename]( open( os.path.join( self.path, filename ), 'rb' ) )
 
 class ulsFileParser(ulsParser):
 	def __init__( self, path ):
 		import os
-
-
 		self.path = path
 		self.parseMap = {}
 		file = os.path.basename( path )
-		if file in ulsParser.parseMap:
-			self.parseMap[file] = ulsParser.parseMap[file]
+		fileCode = file[0:2]
+		print fileCode
+		if fileCode in pyuls.parsers:
+			self.parseMap[file] = functools.partial( pyuls.parse, fileCode )
 
 	def parse( self, filename ):
 		return self.parseMap[filename]( open( self.path, 'rb' ) )
@@ -48,8 +39,11 @@ class ulsZipParser(ulsParser):
 		self.zip = zipfile.ZipFile( path )
 		self.parseMap = {}
 		for file in self.zip.infolist():
-			if file.filename in ulsParser.parseMap:
-				self.parseMap[file.filename] = ulsParser.parseMap[file.filename]
+			file=file.filename
+			if fnmatch.fnmatch(file, '??.dat'):
+				fileCode = file[0:2]
+				if fileCode in pyuls.parsers:
+					self.parseMap[file] = functools.partial( pyuls.parse, fileCode )
 
 	def parse( self, filename ):
 		return self.parseMap[filename]( self.zip.open( filename , 'r' ) )
