@@ -46,10 +46,11 @@ def extract_tables(filename):
 			continue
 		yield(sheet_name,ws.cell_value(0,0),list(extract_table(ws)))
 
+def camelCase(st):
+    output = ''.join(x for x in st.title() if x.isalpha())
+    return output[0].lower() + output[1:]
+
 if __name__ == "__main__":
-	def camelCase(st):
-	    output = ''.join(x for x in st.title() if x.isalpha())
-	    return output[0].lower() + output[1:]
 
 	import sys
 	if( len(sys.argv) > 1 ):
