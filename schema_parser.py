@@ -37,7 +37,7 @@ def extract_table(ws):
 
 def extract_tables(filename):
 	import xlrd
-	wb = xlrd.open_workbook(sys.argv[1])
+	wb = xlrd.open_workbook(filename)
 	for sheet_name in wb.sheet_names():
 		ws = wb.sheet_by_name(sheet_name)
 
