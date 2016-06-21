@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import argparse
 import ioapi
 import pprint
@@ -19,6 +19,6 @@ for path in args.paths:
 		parser = ioapi.ulsFolderParser(path)
 
 	for p in parser.parseMap:
-		print "Parsing:",p
+		print("Parsing:",p)
 		for x in parser.parse(p):
 			pp.pprint(x)

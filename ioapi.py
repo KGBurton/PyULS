@@ -26,7 +26,7 @@ class ulsFileParser(ulsParser):
 		self.parseMap = {}
 		file = os.path.basename( path )
 		fileCode = file[0:2]
-		print fileCode
+		print(fileCode)
 		if fileCode in pyuls.parsers:
 			self.parseMap[file] = functools.partial( pyuls.parse, fileCode )
 

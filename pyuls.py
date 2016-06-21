@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import csv
 """The purpose of this module is to parse each FCC
