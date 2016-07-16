@@ -1,0 +1,63 @@
+#This is an index-definition file, a simple domain-specific language. This is also the manual.
+#These lines starting with # are comments. They are dropped by the parser.
+#Blank lines are skipped too, just like this:
+
+#This file contains columns we want indexed.
+#Indexes are created for each table if the table columns match by string
+#One per line. So the following would create a simple index on tables with a call_sign column:
+call_sign
+uls_file_number
+#...but sometimes the spelling & capitalization varies so we also maybe need to add...
+Callsign
+callsign
+#duplicates are ignored, so this is fine too
+callsign
+callsign
+
+#If you need to do a composite index, you can specify it using commas. For example, these create location-based composite indexes:
+state,city
+zip_code,state,city
+
+#Index names are generated as TABLENAME__COLUMNNAMEONE__COLUMNNAMETWO_...
+#two _ are used as separator because STATUS_DATE might otherwise mean STATUS then DATE or STATUS_DATE
+#And having read the FCC schema, they do not appear to use "__" in any column names
+
+#This is the end of the manual. Below here are some often-useful indexes.
+ULS_File_Number
+uls_file_number
+uls_file_num
+
+#USI - 9 digit number
+Unique_System_Identifier
+unique_system_identifier
+
+#Here are some batch filing numbers - 30 byte string
+EBF_Number
+ebf_number
+
+#more powah!
+power_output
+power_erp
+minimum_power_output
+
+#I wanna give you some good frequencies
+frequency_assigned
+frequency_upper_band
+frequency_carrier
+frequency
+frequency_number
+frequency_type_number
+frequency_type_code
+lower_frequency
+upper_frequency
+point_of_com_frequency
+frequency_offset
+frequency_channel_block
+offset
+
+#some misc names
+first_name
+last_name
+ship_name
+coordinator_name
+entity_name

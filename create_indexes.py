@@ -1,39 +1,42 @@
 #!/usr/bin/python
+import argparse
+parser = argparse.ArgumentParser(description='Creates indexes for ULS SQLite database.')
+parser.add_argument('database',   help='sqlite3 database to index')
+parser.add_argument('--index',      action='append', help='Index a specific column or columns. See example.index')
+parser.add_argument('--index_file', action='append', help='Index definition file. See example.index')
+args = parser.parse_args()
+
+if not args.index_file:
+	args.index_file=[]
+if not args.index:
+	args.index=[]
 
 additional_indexes={}
-index_filename = 'index_columns.txt'
-with open(index_filename) as f:
-	line_no = 0
-	for line in f:
-		line_no = line_no + 1
-		try:
-			short_line = line.rstrip()
-			if( len(short_line) > 0 and short_line[0]!="#" ):
-				columns = short_line.split(",")
-				index_name = "__".join(columns)
-				additional_indexes[index_name]=columns
-		except:
-			import sys
-			print "While parsing: ", index_filename
-			print "Unexpected error: ", sys.exc_info()[0]
-			print "On line number: ", line_no, ":", line
-			raise
+for index_filename in args.index_file:
+	with open(index_filename) as f:
+		line_no = 0
+		for line in f:
+			line_no = line_no + 1
+			try:
+				short_line = line.rstrip()
+				if( len(short_line) > 0 and short_line[0]!="#" ):
+					columns = short_line.split(",")
+					index_name = "__".join(columns)
+					additional_indexes[index_name]=columns
+			except:
+				import sys
+				print "While parsing: ", index_filename
+				print "Unexpected error: ", sys.exc_info()[0]
+				print "On line number: ", line_no, ":", line
+				raise
 
-#At this point, all data is loaded.
+for index in args.index:
+	columns = index.split(",")
+	index_name = "__".join(columns)
+	additional_indexes[index_name] = columns
+
 import sqlite3
-conn = sqlite3.connect('uls.db')
-
-import sys
-if( sys.maxsize > 2**32 ):
-	#Let's get this show on the road.
-	#conn.execute("PRAGMA cache_size=-4000000");
-	#Gotta go fast
-	conn.execute("PRAGMA mmap_size=-1000000");
-	pass
-else:
-	#Maybe not quite as fast...hope you have at least 512MB.
-	conn.execute("PRAGMA cache_size=-268435456");
-	conn.execute("PRAGMA mmap_size=134217728");
+conn = sqlite3.connect(args.database)
 
 existing_tables={}
 for table in conn.execute('select name from sqlite_master where type="table"'):
@@ -62,8 +65,5 @@ for table in existing_tables:
 			print "Creating index:",table_index
 			conn.execute("CREATE INDEX " + table_index + " ON " + table + "(" + ",".join(additional_indexes[index]) +");")
 			existing_indexes.add(table_index)
-
-print "Optimizing Database"
-#conn.execute("VACUUM");
 
 conn.commit()
