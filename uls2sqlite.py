@@ -7,7 +7,8 @@ args = parser.parse_args()
 #print args.database
 #print args.datfiles
 
-os.unlink(args.database)
+if( os.exists( args.database ) )
+	os.unlink(args.database)
 
 import tempfile
 commands = tempfile.NamedTemporaryFile(delete=False)
