@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import os
 import argparse
 parser = argparse.ArgumentParser(description='Parse ULS file into SQLITTE.')
@@ -7,7 +8,7 @@ args = parser.parse_args()
 #print args.database
 #print args.datfiles
 
-if( os.exists( args.database ) )
+if( os.path.isfile( args.database ) ):
 	os.unlink(args.database)
 
 import tempfile
@@ -26,7 +27,7 @@ import re
 dat_tmps = []
 for dat in args.datfiles:
 	dat_base = os.path.basename( dat)
-	if re.search("[A-Z][A-Z].dat", dat_base):
+	if re.search("[a-zA-Z0-9][a-zA-Z0-9].dat", dat_base):
 		dat_tmp = tempfile.NamedTemporaryFile(delete=False)
 		dat_tmp.close()
 		print ("Found:"+dat+". Storing converted data in "+dat_tmp.name)
