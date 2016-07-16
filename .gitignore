@@ -1,6 +1,7 @@
 *.pyc
 *.zip
 *.db
+*.db-journal
 *.dat
 *.bak
 databases/
