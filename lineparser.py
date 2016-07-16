@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#I am not proud of thise code. It mashes mysql CSV format into sqlite dump format.
+#I am not proud of thise code. It mashes mysql CSV format into sqlite CSV format.
 #However, I am 70% certain the FCC has a schizophrenic schema, as the number of columns sometimes changes.
 import sys
 import re
