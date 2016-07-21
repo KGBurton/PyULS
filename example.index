@@ -6,7 +6,6 @@
 #Indexes are created for each table if the table columns match by string
 #One per line. So the following would create a simple index on tables with a call_sign column:
 call_sign
-uls_file_number
 #...but sometimes the spelling & capitalization varies so we also maybe need to add...
 Callsign
 callsign
@@ -30,6 +29,10 @@ uls_file_num
 #USI - 9 digit number
 Unique_System_Identifier
 unique_system_identifier
+
+#FRN
+frn
+FRN
 
 #Here are some batch filing numbers - 30 byte string
 EBF_Number
